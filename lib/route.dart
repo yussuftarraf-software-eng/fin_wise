@@ -9,10 +9,17 @@
 //   - Screens live under lib/screens/.
 //   - ProductDetail needs a Product object, passed as `arguments`.
 
+import 'package:fin_wise/presentation/screens/analysis_screen.dart';
+import 'package:fin_wise/presentation/screens/category_screen.dart';
+import 'package:fin_wise/presentation/screens/forgot_password_screen.dart';
+import 'package:fin_wise/presentation/screens/home_screen.dart';
 import 'package:fin_wise/presentation/screens/launch_screen.dart';
 import 'package:fin_wise/presentation/screens/login_in_screen.dart';
+import 'package:fin_wise/presentation/screens/my_profile_screen.dart';
+import 'package:fin_wise/presentation/screens/new_password_screen.dart';
 import 'package:fin_wise/presentation/screens/sign_up_screen.dart';
 import 'package:fin_wise/presentation/screens/splash_screen.dart';
+import 'package:fin_wise/presentation/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 
 // ---------------------------------------------------------------------
@@ -28,6 +35,12 @@ class AppRoutes {
   static const String loginScreen = '/LoginScreen';
   static const String signUp = '/SignUp';
   static const String forgotPassword = '/ForgotPassword';
+  static const String newPassword = '/NewPassword';
+  static const String homeScreen = '/HomeScreen';
+  static const String analysisScreen = '/AnalysisScreen';
+  static const String categoryScreen = '/CategoryScreen';
+  static const String myProfileScreen = '/MyProfileScreen';
+  static const String transactionScreen = '/TransactionScreen';
 }
 
 // ---------------------------------------------------------------------
@@ -65,7 +78,37 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case AppRoutes.forgotPassword:
       return MaterialPageRoute(
-        builder: (context) => SignUpScreen(),
+        builder: (context) => ForgotPasswordScreen(),
+        settings: settings,
+      );
+    case AppRoutes.newPassword:
+      return MaterialPageRoute(
+        builder: (context) => NewPasswordScreen(),
+        settings: settings,
+      );
+    case AppRoutes.homeScreen:
+      return MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+        settings: settings,
+      );
+    case AppRoutes.analysisScreen:
+      return MaterialPageRoute(
+        builder: (context) => AnalysisScreen(),
+        settings: settings,
+      );
+    case AppRoutes.categoryScreen:
+      return MaterialPageRoute(
+        builder: (context) => CategoryScreen(),
+        settings: settings,
+      );
+    case AppRoutes.myProfileScreen:
+      return MaterialPageRoute(
+        builder: (context) => MyProfileScreen(),
+        settings: settings,
+      );
+    case AppRoutes.transactionScreen:
+      return MaterialPageRoute(
+        builder: (context) => TransactionScreen(),
         settings: settings,
       );
     default:

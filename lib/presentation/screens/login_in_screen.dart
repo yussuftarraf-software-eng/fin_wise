@@ -30,6 +30,7 @@ class _LoginInScreenState extends State<LoginInScreen> {
     super.initState();
     _fingerprintRecognizer = TapGestureRecognizer()
       ..onTap = () {
+        //Todo: add fingerprint functionality of firebase
         print('Fingerprint tapped');
       };
     _signUpRecognizer = TapGestureRecognizer()
@@ -116,12 +117,17 @@ class _LoginInScreenState extends State<LoginInScreen> {
                               textColor: myColors().lettersAndIcons,
                             ),
                             Gap(19),
-                            Text(
-                              "Forgot Password?",
-                              style: GoogleFonts.leagueSpartan(
-                                fontWeight: .w600,
-                                fontSize: 14,
-                                color: myColors().lettersAndIcons,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/ForgotPassword');
+                              },
+                              child: Text(
+                                "Forgot Password?",
+                                style: GoogleFonts.leagueSpartan(
+                                  fontWeight: .w600,
+                                  fontSize: 14,
+                                  color: myColors().lettersAndIcons,
+                                ),
                               ),
                             ),
                             Gap(14),

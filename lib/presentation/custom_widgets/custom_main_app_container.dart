@@ -30,7 +30,7 @@ class CustomMainAppContainer extends StatelessWidget {
             topLeft: Radius.circular(100),
             topRight: Radius.circular(100),
           ),
-          border: Border.all(color: Colors.black, width: 1),
+          border: Border.all(color: Colors.black, width: 0),
           color: myColors().backgroundGreenWhite,
         ),
         child: child,

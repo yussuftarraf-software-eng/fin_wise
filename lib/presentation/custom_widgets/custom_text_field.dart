@@ -10,6 +10,10 @@ class CustomTextField extends StatelessWidget {
   final bool isThereIcon;
   final String? svgIcon;
   final bool obscureText;
+  final bool readOnly;
+  final Future<dynamic> Function()?
+  onTap; // FIXED: made nullable so it can default to null instead of invalid `{}`
+
   const CustomTextField({
     super.key,
     required this.controller,
@@ -17,6 +21,9 @@ class CustomTextField extends StatelessWidget {
     this.isThereIcon = false,
     this.svgIcon,
     required this.obscureText,
+    this.readOnly =
+        false, // FIXED: added missing `this.` so it actually sets the field (defaults to false as requested)
+    this.onTap, // FIXED: no assignment needed now — nullable defaults to null automatically (empty/no-op as requested)
   });
 
   @override
@@ -31,6 +38,12 @@ class CustomTextField extends StatelessWidget {
       child: TextField(
         obscureText: obscureText,
         controller: controller,
+        readOnly:
+            readOnly, // NEW: now actually wired up — was declared but unused before
+        onTap: onTap == null
+            ? null
+            : () =>
+                  onTap!(), // NEW: wraps your async onTap into the sync VoidCallback TextField expects
         keyboardType: TextInputType.emailAddress,
         enableSuggestions: false,
         autocorrect: false,

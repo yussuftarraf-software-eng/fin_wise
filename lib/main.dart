@@ -1,3 +1,4 @@
+import 'package:fin_wise/presentation/screens/home_screen.dart';
 import 'package:fin_wise/presentation/screens/splash_screen.dart';
 import 'package:fin_wise/route.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.homeScreen,
       onGenerateRoute: onGenerateRoute,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
     );
   }
 }
