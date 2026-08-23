@@ -6,10 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants/my_colors.dart';
-import '../custom_widgets/custom_main_app_container.dart';
-import '../custom_widgets/custom_text_field.dart';
-import '../custom_widgets/custom_text_poppins.dart';
+import '../../../constants/my_colors.dart';
+import '../../../domain/functions/validation_functions.dart';
+import '../../custom_widgets/custom_main_app_container.dart';
+import '../../custom_widgets/custom_text_form_field.dart';
+import '../../custom_widgets/custom_text_poppins.dart';
 
 class LoginInScreen extends StatefulWidget {
   const LoginInScreen({super.key});
@@ -21,6 +22,7 @@ class LoginInScreen extends StatefulWidget {
 class _LoginInScreenState extends State<LoginInScreen> {
   late final TapGestureRecognizer _fingerprintRecognizer;
   late final TapGestureRecognizer _signUpRecognizer;
+  final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
 
@@ -75,32 +77,46 @@ class _LoginInScreenState extends State<LoginInScreen> {
                         ),
                       ),
                       Gap(8),
-
-                      //user email field
-                      CustomTextField(
-                        controller: emailController,
-                        hintText: 'example@example.com',
-                        obscureText: false,
-                      ),
-                      Gap(23),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: CustomTextPoppins(
-                          text: "Password",
-                          fontSize: 15,
-                          fontWeight: .w600,
-                          color: myColors().lettersAndIcons,
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          children: [
+                            //user email field
+                            CustomTextField(
+                              controller: emailController,
+                              hintText: 'example@example.com',
+                              obscureText: false,
+                              textInputType: TextInputType.emailAddress,
+                              validator: ValidationFunctions.validateEmail,
+                            ),
+                            Gap(23),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                              ),
+                              child: CustomTextPoppins(
+                                text: "Password",
+                                fontSize: 15,
+                                fontWeight: .w600,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(3),
+                            //user password field
+                            CustomTextField(
+                              controller: passwordController,
+                              hintText: "● ● ● ● ● ● ● ● ● ",
+                              isThereIcon: true,
+                              svgIcon: 'assets/svgs/Eye-Pass.svg',
+                              obscureText: true,
+                              textInputType: TextInputType.number,
+                              validator: ValidationFunctions.validatePassword,
+                            ),
+                          ],
                         ),
                       ),
-                      Gap(3),
-                      //user password field
-                      CustomTextField(
-                        controller: passwordController,
-                        hintText: "● ● ● ● ● ● ● ● ● ",
-                        isThereIcon: true,
-                        svgIcon: 'assets/svgs/Eye-Pass.svg',
-                        obscureText: true,
-                      ),
+
                       Gap(91),
                       Center(
                         child: Column(
@@ -108,7 +124,15 @@ class _LoginInScreenState extends State<LoginInScreen> {
                             //login button
                             CustomButton(
                               onTap: () {
-                                //Todo: add login functionality of firebase
+                                // validate() itself already triggers a rebuild
+                                // of each field's error state — no setState needed here.
+                                if (_formKey.currentState!.validate()) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Processing Data'),
+                                    ),
+                                  );
+                                }
                               },
                               text: "Log in ",
                               width: 207,

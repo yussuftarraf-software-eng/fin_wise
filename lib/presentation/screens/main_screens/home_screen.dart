@@ -8,8 +8,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants/my_colors.dart';
-import '../../data/model/transaction.dart';
+import '../../../constants/my_colors.dart';
+import '../../../data/model/transaction.dart';
+import '../../custom_widgets/custom_notification_button.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -84,12 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    //Todo : Navigate to notification screen
-                  },
-                  child: SvgPicture.asset("assets/svgs/Icon-Notification.svg"),
-                ),
+
+                //notification button
+                CustomNotificationButton(),
               ],
             ),
           ),
@@ -190,6 +188,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           color: myColors().mainGreen,
                           borderRadius: BorderRadius.circular(31),
+                        ),
+                        child: Row(
+                          children: [
+                            Gap(36),
+                            Column(children: []),
+                            Gap(33),
+                            //divider
+                            Container(
+                              height: 108,
+                              width: 1,
+                              color: Colors.white,
+                            ),
+
+                            Column(children: []),
+                          ],
                         ),
                       ),
                       Gap(26),

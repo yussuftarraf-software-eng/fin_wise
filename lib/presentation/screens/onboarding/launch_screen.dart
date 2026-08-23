@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants/my_colors.dart';
-import '../custom_widgets/custom_button.dart';
+import '../../../constants/my_colors.dart';
+import '../../custom_widgets/custom_button.dart';
 
 class LaunchScreen extends StatelessWidget {
   const LaunchScreen({super.key});

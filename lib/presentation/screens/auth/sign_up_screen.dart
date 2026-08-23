@@ -1,13 +1,14 @@
 import 'package:fin_wise/constants/my_colors.dart';
+import 'package:fin_wise/domain/functions/validation_functions.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../custom_widgets/custom_button.dart';
-import '../custom_widgets/custom_main_app_container.dart';
-import '../custom_widgets/custom_text_field.dart';
-import '../custom_widgets/custom_text_poppins.dart';
+import '../../custom_widgets/custom_button.dart';
+import '../../custom_widgets/custom_main_app_container.dart';
+import '../../custom_widgets/custom_text_form_field.dart';
+import '../../custom_widgets/custom_text_poppins.dart';
 
 class SignUpScreen extends StatefulWidget {
   // CHANGED: StatelessWidget -> StatefulWidget
@@ -108,102 +109,123 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       Gap(3),
-                      CustomTextField(
-                        controller: fullNameController,
-                        hintText: 'Jeff Nippard',
-                        obscureText: false,
-                      ),
-                      Gap(16),
-                      //choose email
-                      Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: CustomTextPoppins(
-                          text: "Email",
-                          fontWeight: .w600,
-                          fontSize: 15,
-                          color: myColors().lettersAndIcons,
+                      Form(
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          children: [
+                            CustomTextField(
+                              controller: fullNameController,
+                              hintText: 'Jeff Nippard',
+                              obscureText: false,
+                              textInputType: TextInputType.name,
+                              validator: ValidationFunctions.validateFullName,
+                            ),
+                            Gap(16),
+                            //choose email
+                            Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: CustomTextPoppins(
+                                text: "Email",
+                                fontWeight: .w600,
+                                fontSize: 15,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(3),
+                            CustomTextField(
+                              controller: emailController,
+                              hintText: 'example@example.com',
+                              obscureText: false,
+                              textInputType: TextInputType.emailAddress,
+                              validator: ValidationFunctions.validateEmail,
+                            ),
+                            Gap(16),
+                            //choose phone number
+                            Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: CustomTextPoppins(
+                                text: "Mobile Number",
+                                fontWeight: .w600,
+                                fontSize: 15,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(3),
+                            CustomTextField(
+                              controller: mobileNumberController,
+                              hintText: "+251912345678",
+                              obscureText: false,
+                              textInputType: TextInputType.phone,
+                              validator:
+                                  ValidationFunctions.validateMobileNumber,
+                            ),
+                            Gap(16),
+                            //choose date of birth
+                            Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: CustomTextPoppins(
+                                text: "Date of Birth",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(3),
+                            CustomTextField(
+                              controller: dateOfBirthController,
+                              hintText:
+                                  "DD / MM / YYYY", // fixed typo: was "DD / MM /YYY"
+                              obscureText: false,
+                              readOnly:
+                                  true, // NEW: blocks manual typing entirely
+                              onTap: () => _pickDateOfBirth(context),
+                              textInputType: TextInputType
+                                  .datetime, // NEW: opens the date picker instead
+                              validator: ValidationFunctions
+                                  .validateDateOfBirth, // NEW: validates date
+                            ),
+                            Gap(16),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: CustomTextPoppins(
+                                text: "Password",
+                                fontWeight: .w600,
+                                fontSize: 15,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(16),
+                            CustomTextField(
+                              controller: passwordController,
+                              hintText: "● ● ● ● ● ● ● ● ● ",
+                              isThereIcon: true,
+                              svgIcon: 'assets/svgs/Eye-Pass.svg',
+                              obscureText: true,
+                              textInputType: TextInputType.number,
+                              validator: ValidationFunctions.validatePassword,
+                            ),
+                            Gap(16),
+                            Padding(
+                              padding: EdgeInsetsGeometry.only(left: 18),
+                              child: CustomTextPoppins(
+                                text: "Confirm Password",
+                                fontWeight: .w600,
+                                fontSize: 15,
+                                color: myColors().lettersAndIcons,
+                              ),
+                            ),
+                            Gap(3),
+                            CustomTextField(
+                              isThereIcon: true,
+                              svgIcon: 'assets/svgs/Eye-Pass.svg',
+                              controller: confirmPasswordController,
+                              hintText: "● ● ● ● ● ● ● ● ● ",
+                              obscureText: true,
+                              textInputType: TextInputType.number,
+                              validator: ValidationFunctions.validatePassword,
+                            ),
+                          ],
                         ),
-                      ),
-                      Gap(3),
-                      CustomTextField(
-                        controller: emailController,
-                        hintText: 'example@example.com',
-                        obscureText: false,
-                      ),
-                      Gap(16),
-                      //choose phone number
-                      Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: CustomTextPoppins(
-                          text: "Mobile Number",
-                          fontWeight: .w600,
-                          fontSize: 15,
-                          color: myColors().lettersAndIcons,
-                        ),
-                      ),
-                      Gap(3),
-                      CustomTextField(
-                        controller: mobileNumberController,
-                        hintText: "+251912345678",
-                        obscureText: false,
-                      ),
-                      Gap(16),
-                      //choose date of birth
-                      Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: CustomTextPoppins(
-                          text: "Date of Birth",
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15,
-                          color: myColors().lettersAndIcons,
-                        ),
-                      ),
-                      Gap(3),
-                      CustomTextField(
-                        controller: dateOfBirthController,
-                        hintText:
-                            "DD / MM / YYYY", // fixed typo: was "DD / MM /YYY"
-                        obscureText: false,
-                        readOnly: true, // NEW: blocks manual typing entirely
-                        onTap: () => _pickDateOfBirth(
-                          context,
-                        ), // NEW: opens the date picker instead
-                      ),
-                      Gap(16),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: CustomTextPoppins(
-                          text: "Password",
-                          fontWeight: .w600,
-                          fontSize: 15,
-                          color: myColors().lettersAndIcons,
-                        ),
-                      ),
-                      Gap(16),
-                      CustomTextField(
-                        controller: passwordController,
-                        hintText: "● ● ● ● ● ● ● ● ● ",
-                        isThereIcon: true,
-                        svgIcon: 'assets/svgs/Eye-Pass.svg',
-                        obscureText: true,
-                      ),
-                      Gap(16),
-                      Padding(
-                        padding: EdgeInsetsGeometry.only(left: 18),
-                        child: CustomTextPoppins(
-                          text: "Confirm Password",
-                          fontWeight: .w600,
-                          fontSize: 15,
-                          color: myColors().lettersAndIcons,
-                        ),
-                      ),
-                      Gap(3),
-                      CustomTextField(
-                        isThereIcon: true,
-                        svgIcon: 'assets/svgs/Eye-Pass.svg',
-                        controller: confirmPasswordController,
-                        hintText: "● ● ● ● ● ● ● ● ● ",
-                        obscureText: true,
                       ),
                       Gap(28),
                       Center(

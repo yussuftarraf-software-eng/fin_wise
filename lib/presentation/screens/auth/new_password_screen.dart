@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../constants/my_colors.dart';
-import '../custom_widgets/custom_button.dart';
-import '../custom_widgets/custom_main_app_container.dart';
-import '../custom_widgets/custom_text_field.dart';
-import '../custom_widgets/custom_text_poppins.dart';
+import '../../../constants/my_colors.dart';
+import '../../custom_widgets/custom_button.dart';
+import '../../custom_widgets/custom_main_app_container.dart';
+import '../../custom_widgets/custom_text_form_field.dart';
+import '../../custom_widgets/custom_text_poppins.dart';
 
 class NewPasswordScreen extends StatelessWidget {
   NewPasswordScreen({super.key});
@@ -50,6 +50,7 @@ class NewPasswordScreen extends StatelessWidget {
                       controller: newPasswordController,
                       hintText: '● ● ● ● ● ● ● ● ● ',
                       obscureText: true,
+                      textInputType: TextInputType.number,
                     ),
                     Gap(42),
                     CustomTextPoppins(
@@ -65,6 +66,7 @@ class NewPasswordScreen extends StatelessWidget {
                       controller: newPasswordController,
                       hintText: '● ● ● ● ● ● ● ● ● ',
                       obscureText: true,
+                      textInputType: TextInputType.number,
                     ),
                     Gap(169),
                     CustomButton(

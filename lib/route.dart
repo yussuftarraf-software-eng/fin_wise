@@ -9,17 +9,18 @@
 //   - Screens live under lib/screens/.
 //   - ProductDetail needs a Product object, passed as `arguments`.
 
-import 'package:fin_wise/presentation/screens/analysis_screen.dart';
-import 'package:fin_wise/presentation/screens/category_screen.dart';
-import 'package:fin_wise/presentation/screens/forgot_password_screen.dart';
-import 'package:fin_wise/presentation/screens/home_screen.dart';
-import 'package:fin_wise/presentation/screens/launch_screen.dart';
-import 'package:fin_wise/presentation/screens/login_in_screen.dart';
-import 'package:fin_wise/presentation/screens/my_profile_screen.dart';
-import 'package:fin_wise/presentation/screens/new_password_screen.dart';
-import 'package:fin_wise/presentation/screens/sign_up_screen.dart';
-import 'package:fin_wise/presentation/screens/splash_screen.dart';
-import 'package:fin_wise/presentation/screens/transaction_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/analysis_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/category_screen.dart';
+import 'package:fin_wise/presentation/screens/auth/forgot_password_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/home_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/notification_screen.dart';
+import 'package:fin_wise/presentation/screens/onboarding/launch_screen.dart';
+import 'package:fin_wise/presentation/screens/auth/login_in_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/my_profile_screen.dart';
+import 'package:fin_wise/presentation/screens/auth/new_password_screen.dart';
+import 'package:fin_wise/presentation/screens/auth/sign_up_screen.dart';
+import 'package:fin_wise/presentation/screens/onboarding/splash_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 
 // ---------------------------------------------------------------------
@@ -41,6 +42,7 @@ class AppRoutes {
   static const String categoryScreen = '/CategoryScreen';
   static const String myProfileScreen = '/MyProfileScreen';
   static const String transactionScreen = '/TransactionScreen';
+  static const String notificationScreen = '/NotificationScreen';
 }
 
 // ---------------------------------------------------------------------
@@ -109,6 +111,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AppRoutes.transactionScreen:
       return MaterialPageRoute(
         builder: (context) => TransactionScreen(),
+        settings: settings,
+      );
+    case AppRoutes.notificationScreen:
+      return MaterialPageRoute(
+        builder: (context) => NotificationScreen(),
         settings: settings,
       );
     default:

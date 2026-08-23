@@ -46,19 +46,20 @@ class _CustomNavBarState extends State<CustomNavBar> {
       ),
       width: double.infinity,
       height: 108,
-      child: Row(
-        mainAxisAlignment: .center,
-        children: [
-          ...List.generate(5, (index) {
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  isPageSelected = index;
-                });
-                Navigator.pushNamed(context, navigate(index)!);
-              },
-              child: Padding(
-                padding: EdgeInsets.only(right: 24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 44),
+        child: Row(
+          crossAxisAlignment: .center,
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            ...List.generate(5, (index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isPageSelected = index;
+                  });
+                  Navigator.pushNamed(context, navigate(index)!);
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
@@ -71,10 +72,10 @@ class _CustomNavBarState extends State<CustomNavBar> {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(svgIcons[index]),
                 ),
-              ),
-            );
-          }),
-        ],
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

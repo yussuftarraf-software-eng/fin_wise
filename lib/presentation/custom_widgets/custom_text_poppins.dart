@@ -8,14 +8,17 @@ class CustomTextPoppins extends StatelessWidget {
     required this.fontWeight,
     required this.fontSize,
     required this.color,
+    this.maxLines = 1,
   });
   final String text;
   final FontWeight fontWeight;
   final double fontSize;
   final Color color;
+  final int maxLines;
   @override
   Widget build(BuildContext context) {
     return Text(
+      maxLines: maxLines,
       text,
       style: GoogleFonts.poppins(
         fontSize: fontSize,

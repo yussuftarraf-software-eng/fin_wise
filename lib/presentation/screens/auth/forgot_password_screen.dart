@@ -7,9 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../custom_widgets/custom_main_app_container.dart';
-import '../custom_widgets/custom_text_field.dart';
-import '../custom_widgets/custom_text_poppins.dart';
+import '../../custom_widgets/custom_main_app_container.dart';
+import '../../custom_widgets/custom_text_form_field.dart';
+import '../../custom_widgets/custom_text_poppins.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
@@ -71,6 +71,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         controller: emailController,
                         hintText: 'example@example.com',
                         obscureText: false,
+                        textInputType: TextInputType.emailAddress,
                       ),
                       Gap(45),
                       Center(
