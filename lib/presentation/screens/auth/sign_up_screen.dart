@@ -1,10 +1,14 @@
 import 'package:fin_wise/constants/my_colors.dart';
+import 'package:fin_wise/data/repository/auth_implementaion.dart';
+import 'package:fin_wise/data/web_services/dio_consumer.dart';
 import 'package:fin_wise/domain/functions/validation_functions.dart';
+import 'package:fin_wise/route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../data/model/user_model.dart';
 import '../../custom_widgets/custom_button.dart';
 import '../../custom_widgets/custom_main_app_container.dart';
 import '../../custom_widgets/custom_text_form_field.dart';
@@ -50,6 +54,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             "${picked.year}";
       });
     }
+  }
+
+  Future<dynamic> signUp() async {
+    final response = await AuthImplementation(DioConsumer()).signUp(
+      UserModelSignUp(
+        firstName: fullNameController.text,
+        lastName: emailController.text,
+        age: 20,
+      ),
+    );
+    print("${response.firstName} ${response.lastName} ${response.age}");
+    Navigator.pushNamed(context, AppRoutes.homeScreen);
   }
 
   @override
@@ -261,9 +277,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Gap(13),
                       Center(
                         child: CustomButton(
-                          onTap: () {
-                            //Todo: add signup functionality of firebase
-                          },
+                          onTap: signUp,
                           text: 'Sign Up',
                           width: 207,
                           height: 45,
