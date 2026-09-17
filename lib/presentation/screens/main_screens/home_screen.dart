@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:fin_wise/presentation/custom_widgets/custom_main_app_container.dart';
 import 'package:fin_wise/presentation/custom_widgets/custom_nav_bar.dart';
 import 'package:fin_wise/presentation/custom_widgets/custom_text_poppins.dart';
+import 'package:fin_wise/presentation/custom_widgets/progress_circular_element.dart';
+import 'package:fin_wise/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -21,7 +23,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   double totalBalance = 1000;
-
+  double revenueLastWeek = 4000.00;
+  double foodLastWeek = -1000.00;
   double totalExpense = 1000;
 
   List<String> timeFrames = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
@@ -57,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myColors().mainGreen,
+      backgroundColor: myColors.mainGreen,
       body: Column(
         children: [
           Gap(60),
@@ -73,13 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: 'Hi,Welcome Back',
                       fontWeight: .w600,
                       fontSize: 20,
-                      color: myColors().lettersAndIcons,
+                      color: myColors.lettersAndIcons,
                     ),
                     Text(
                       "Good Morning",
                       style: GoogleFonts.leagueSpartan(
                         fontSize: 14,
-                        color: myColors().lettersAndIcons,
+                        color: myColors.lettersAndIcons,
                       ),
                     ),
                   ],
@@ -111,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: 'Total Balance',
                               fontWeight: .normal,
                               fontSize: 12,
-                              color: myColors().lettersAndIcons,
+                              color: myColors.lettersAndIcons,
                             ),
                           ],
                         ),
@@ -138,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: "Total Expense",
                               fontWeight: .normal,
                               fontSize: 12,
-                              color: myColors().lettersAndIcons,
+                              color: myColors.lettersAndIcons,
                             ),
                           ],
                         ),
@@ -163,17 +166,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: "30% of your expenses, looks good.",
                       fontWeight: .normal,
                       fontSize: 15,
-                      color: myColors().lettersAndIcons,
+                      color: myColors.lettersAndIcons,
                     ),
                   ],
                 ),
-                Gap(32),
+                Gap(21),
               ],
             ),
           ),
           CustomMainAppContainer(
             EdgeRaduis: 100,
-            backgroundColor: myColors().backgroundGreenWhite,
+            backgroundColor: myColors.backgroundGreenWhite,
             child: Column(
               children: [
                 Gap(33),
@@ -182,31 +185,118 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       //mini dashboard container
-                      Container(
-                        width: 357,
-                        height: 152,
-                        decoration: BoxDecoration(
-                          color: myColors().mainGreen,
-                          borderRadius: BorderRadius.circular(31),
-                        ),
-                        child: Row(
-                          children: [
-                            Gap(36),
-                            Column(children: []),
-                            Gap(33),
-                            //divider
-                            Container(
-                              height: 108,
-                              width: 1,
-                              color: Colors.white,
-                            ),
-
-                            Column(children: []),
-                          ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.accountBalanceScreen,
+                          );
+                        },
+                        child: Container(
+                          width: 357,
+                          height: 152,
+                          decoration: BoxDecoration(
+                            color: myColors.mainGreen,
+                            borderRadius: BorderRadius.circular(31),
+                          ),
+                          child: Row(
+                            children: [
+                              Gap(36),
+                              Column(
+                                children: [
+                                  Gap(25),
+                                  ProgressCircularElement(
+                                    showSvg: true,
+                                    svgPath: "assets/svgs/Car.svg",
+                                    size: 70,
+                                    progress: 0.5,
+                                  ),
+                                  Gap(4),
+                                  CustomTextPoppins(
+                                    maxLines: 2,
+                                    text: "Savings\nOn Goals",
+                                    fontWeight: .w600,
+                                    fontSize: 12,
+                                    color: myColors.lettersAndIcons,
+                                  ),
+                                ],
+                              ),
+                              Gap(34),
+                              //divider
+                              Container(
+                                height: 108,
+                                width: 1,
+                                color: Colors.white,
+                              ),
+                              Gap(18),
+                              Column(
+                                children: [
+                                  Gap(25),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/svgs/Salary.svg",
+                                      ),
+                                      Gap(12),
+                                      Column(
+                                        crossAxisAlignment: .start,
+                                        children: [
+                                          CustomTextPoppins(
+                                            text: "Revenue Last Week",
+                                            fontWeight: .normal,
+                                            fontSize: 12,
+                                            color: myColors.lettersAndIcons,
+                                          ),
+                                          Text(
+                                            "\$ ${revenueLastWeek}",
+                                            style: GoogleFonts.inter(
+                                              fontWeight: .bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Gap(11),
+                                  Container(
+                                    height: 1,
+                                    width: 161,
+                                    color: Colors.white,
+                                  ),
+                                  Gap(13),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset("assets/svgs/Food.svg"),
+                                      Gap(12),
+                                      Column(
+                                        crossAxisAlignment: .start,
+                                        children: [
+                                          CustomTextPoppins(
+                                            text: "Food Last Week",
+                                            fontWeight: .normal,
+                                            fontSize: 12,
+                                            color: myColors.lettersAndIcons,
+                                          ),
+                                          Text(
+                                            "\$ ${foodLastWeek}",
+                                            style: GoogleFonts.inter(
+                                              fontWeight: .bold,
+                                              fontSize: 15,
+                                              color: myColors.oceanBlueButton,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Gap(26),
-
                       // select time frame day,week and month
                       Container(
                         clipBehavior: Clip.antiAlias,
@@ -238,7 +328,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(19),
                                         color: isTimeFrameSelected == index
-                                            ? myColors().mainGreen
+                                            ? myColors.mainGreen
                                             : Color(0xffDFF7E2),
                                       ),
                                       width: 95,
@@ -248,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           text: timeFrames[index],
                                           fontWeight: .normal,
                                           fontSize: 15,
-                                          color: myColors().lettersAndIcons,
+                                          color: myColors.lettersAndIcons,
                                         ),
                                       ),
                                     ),
@@ -261,86 +351,94 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Gap(24),
                       //transaction list
-                      ...List.generate(transactions.length, (index) {
-                        final transaction = transactions[index];
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: Row(
-                            children: [
-                              //icon and background color
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(22),
-                                  color: transaction.iconBackgroundColor,
+                      SingleChildScrollView(
+                        physics: BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics(),
+                        ),
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          children: [
+                            ...List.generate(transactions.length, (index) {
+                              final transaction = transactions[index];
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 15),
+                                child: Row(
+                                  children: [
+                                    //icon and background color
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(22),
+                                        color: transaction.iconBackgroundColor,
+                                      ),
+                                      width: 57,
+                                      height: 53,
+                                      child: Center(
+                                        child: Icon(transaction.icon, size: 25),
+                                      ),
+                                    ),
+                                    Gap(16),
+                                    //title and date
+                                    Column(
+                                      crossAxisAlignment: .start,
+                                      children: [
+                                        CustomTextPoppins(
+                                          text: transaction.title,
+                                          fontWeight: .w600,
+                                          fontSize: 15,
+                                          color: myColors.lettersAndIcons,
+                                        ),
+                                        Gap(2.5),
+                                        CustomTextPoppins(
+                                          text: transaction.formattedDateTime,
+                                          fontWeight: .w600,
+                                          fontSize: 12,
+                                          color: Color(0xff0068FF),
+                                        ),
+                                      ],
+                                    ),
+                                    Gap(10),
+                                    //divider
+                                    Container(
+                                      width: 1,
+                                      height: 35,
+                                      color: Color(0xff00D09E),
+                                    ),
+                                    Gap(10),
+                                    //category
+                                    Container(
+                                      width: 65,
+                                      child: CustomTextPoppins(
+                                        text: transaction.category,
+                                        fontWeight: .w400,
+                                        fontSize: 13,
+                                        color: myColors.lettersAndIcons,
+                                      ),
+                                    ),
+                                    //divider
+                                    Container(
+                                      width: 1,
+                                      height: 35,
+                                      color: Color(0xff00D09E),
+                                    ),
+                                    Gap(10),
+                                    CustomTextPoppins(
+                                      text: transaction.formattedAmount,
+                                      fontWeight: .w600,
+                                      fontSize: 15,
+                                      color: transaction.amount > 0
+                                          ? Color(0xff052224)
+                                          : myColors.oceanBlueButton,
+                                    ),
+                                  ],
                                 ),
-                                width: 57,
-                                height: 53,
-                                child: Center(
-                                  child: Icon(transaction.icon, size: 25),
-                                ),
-                              ),
-                              Gap(16),
-                              //title and date
-                              Column(
-                                crossAxisAlignment: .start,
-                                children: [
-                                  CustomTextPoppins(
-                                    text: transaction.title,
-                                    fontWeight: .w600,
-                                    fontSize: 15,
-                                    color: myColors().lettersAndIcons,
-                                  ),
-                                  Gap(2.5),
-                                  CustomTextPoppins(
-                                    text: transaction.formattedDateTime,
-                                    fontWeight: .w600,
-                                    fontSize: 12,
-                                    color: Color(0xff0068FF),
-                                  ),
-                                ],
-                              ),
-                              Gap(10),
-                              //divider
-                              Container(
-                                width: 1,
-                                height: 35,
-                                color: Color(0xff00D09E),
-                              ),
-                              Gap(10),
-                              //category
-                              Container(
-                                width: 65,
-                                child: CustomTextPoppins(
-                                  text: transaction.category,
-                                  fontWeight: .w400,
-                                  fontSize: 13,
-                                  color: myColors().lettersAndIcons,
-                                ),
-                              ),
-                              //divider
-                              Container(
-                                width: 1,
-                                height: 35,
-                                color: Color(0xff00D09E),
-                              ),
-                              Gap(10),
-                              CustomTextPoppins(
-                                text: transaction.formattedAmount,
-                                fontWeight: .w600,
-                                fontSize: 15,
-                                color: transaction.amount > 0
-                                    ? Color(0xff052224)
-                                    : myColors().oceanBlueButton,
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                              );
+                            }),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Spacer(),
-                CustomNavBar(isPageSelected: 0),
               ],
             ),
           ),

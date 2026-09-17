@@ -22,7 +22,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: myColors().mainGreen,
+        backgroundColor: myColors.mainGreen,
         body: Center(
           child: Column(
             children: [
@@ -31,12 +31,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                 text: "Forgot Password",
                 fontWeight: .w600,
                 fontSize: 30,
-                color: myColors().lettersAndIcons,
+                color: myColors.lettersAndIcons,
               ),
               Gap(65),
               CustomMainAppContainer(
                 EdgeRaduis: 100,
-                backgroundColor: myColors().backgroundDarkModeAndLetters,
+                backgroundColor: myColors.backgroundDarkModeAndLetters,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 37),
                   child: Column(
@@ -47,14 +47,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                         text: "Reset Password?",
                         fontWeight: .w600,
                         fontSize: 20,
-                        color: myColors().darkModeGreenBar,
+                        color: myColors.darkModeGreenBar,
                       ),
                       Gap(14),
                       Center(
                         child: Text(
                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
                           style: GoogleFonts.leagueSpartan(
-                            color: myColors().darkModeGreenBar,
+                            color: myColors.darkModeGreenBar,
                             wordSpacing: 0.01,
                           ),
                         ),
@@ -64,7 +64,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         text: "Enter Email Address",
                         fontWeight: .w600,
                         fontSize: 15,
-                        color: myColors().lettersAndIcons,
+                        color: myColors.lettersAndIcons,
                       ),
                       Gap(8),
                       CustomTextField(
@@ -88,8 +88,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 text: 'Next Step',
                                 width: 169,
                                 height: 32,
-                                backgroundColor: myColors().mainGreen,
-                                textColor: myColors().lettersAndIcons,
+                                backgroundColor: myColors.mainGreen,
+                                textColor: myColors.lettersAndIcons,
                               ),
                             ),
                             Gap(25),
@@ -100,8 +100,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                               text: "Sign Up",
                               width: 169,
                               height: 32,
-                              backgroundColor: myColors().lightGreen,
-                              textColor: myColors().darkModeGreenBar,
+                              backgroundColor: myColors.lightGreen,
+                              textColor: myColors.darkModeGreenBar,
                             ),
                             Gap(18),
                             Text(
@@ -109,7 +109,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                               style: GoogleFonts.leagueSpartan(
                                 fontSize: 13,
                                 fontWeight: .w300,
-                                color: myColors().lettersAndIcons,
+                                color: myColors.lettersAndIcons,
                               ),
                             ),
                             Gap(19),
@@ -126,14 +126,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                               TextSpan(
                                 text: "Don't have an account? ",
                                 style: GoogleFonts.leagueSpartan(
-                                  color: myColors().lettersAndIcons,
+                                  color: myColors.lettersAndIcons,
                                   fontSize: 13,
                                 ),
                                 children: [
                                   TextSpan(
                                     text: "Sign Up",
                                     style: GoogleFonts.leagueSpartan(
-                                      color: myColors()
+                                      color: myColors
                                           .blueButton, // or whatever blue you're using
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,

@@ -16,7 +16,7 @@ class NewPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myColors().mainGreen,
+      backgroundColor: myColors.mainGreen,
       body: Center(
         child: Column(
           children: [
@@ -25,12 +25,12 @@ class NewPasswordScreen extends StatelessWidget {
               text: 'New Password',
               fontWeight: .w600,
               fontSize: 30,
-              color: myColors().lettersAndIcons,
+              color: myColors.lettersAndIcons,
             ),
             Gap(65),
             CustomMainAppContainer(
               EdgeRaduis: 100,
-              backgroundColor: myColors().backgroundGreenWhite,
+              backgroundColor: myColors.backgroundGreenWhite,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 36),
                 child: Column(
@@ -41,7 +41,7 @@ class NewPasswordScreen extends StatelessWidget {
                       text: "New Password",
                       fontWeight: .w600,
                       fontSize: 15,
-                      color: myColors().lettersAndIcons,
+                      color: myColors.lettersAndIcons,
                     ),
                     Gap(8),
                     CustomTextField(
@@ -57,7 +57,7 @@ class NewPasswordScreen extends StatelessWidget {
                       text: "Confirm New Password",
                       fontWeight: .w600,
                       fontSize: 15,
-                      color: myColors().lettersAndIcons,
+                      color: myColors.lettersAndIcons,
                     ),
                     Gap(8),
                     CustomTextField(
@@ -73,8 +73,8 @@ class NewPasswordScreen extends StatelessWidget {
                       text: 'Change Password',
                       width: 357,
                       height: 45,
-                      backgroundColor: myColors().mainGreen,
-                      textColor: myColors().lettersAndIcons,
+                      backgroundColor: myColors.mainGreen,
+                      textColor: myColors.lettersAndIcons,
                     ),
                   ],
                 ),

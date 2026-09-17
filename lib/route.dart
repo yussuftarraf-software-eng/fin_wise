@@ -9,6 +9,7 @@
 //   - Screens live under lib/screens/.
 //   - ProductDetail needs a Product object, passed as `arguments`.
 
+import 'package:fin_wise/presentation/screens/main_screens/account_balance_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/analysis_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/category_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/forgot_password_screen.dart';
@@ -21,6 +22,7 @@ import 'package:fin_wise/presentation/screens/auth/new_password_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/sign_up_screen.dart';
 import 'package:fin_wise/presentation/screens/onboarding/splash_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/transaction_screen.dart';
+import 'package:fin_wise/root.dart';
 import 'package:flutter/material.dart';
 
 // ---------------------------------------------------------------------
@@ -43,6 +45,8 @@ class AppRoutes {
   static const String myProfileScreen = '/MyProfileScreen';
   static const String transactionScreen = '/TransactionScreen';
   static const String notificationScreen = '/NotificationScreen';
+  static const String accountBalanceScreen = '/AccountBalanceScreen';
+  static const String root = '/Route';
 }
 
 // ---------------------------------------------------------------------
@@ -116,6 +120,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AppRoutes.notificationScreen:
       return MaterialPageRoute(
         builder: (context) => NotificationScreen(),
+        settings: settings,
+      );
+    case AppRoutes.accountBalanceScreen:
+      return MaterialPageRoute(
+        builder: (context) => AccountBalanceScreen(),
+        settings: settings,
+      );
+    case AppRoutes.root:
+      return MaterialPageRoute(
+        builder: (context) => Root(isPageSelected: 0),
         settings: settings,
       );
     default:

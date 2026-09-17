@@ -22,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 2));
     if (!mounted) return; // guard: widget might be gone by the time this fires
 
-    Navigator.pushNamed(context, AppRoutes.launchScreen);
+    Navigator.pushReplacementNamed(context, AppRoutes.launchScreen);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myColors().mainGreen,
+      backgroundColor: myColors.mainGreen,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

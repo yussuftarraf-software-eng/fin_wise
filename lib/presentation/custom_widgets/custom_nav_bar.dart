@@ -1,80 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constants/my_colors.dart';
-import '../../route.dart';
 
-class CustomNavBar extends StatefulWidget {
-  final int isPageSelected;
-  CustomNavBar({super.key, required this.isPageSelected});
+class CustomNavBar extends StatelessWidget {
+  const CustomNavBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onTap,
+  });
 
-  @override
-  State<CustomNavBar> createState() => _CustomNavBarState();
-}
+  final int selectedIndex;
+  final ValueChanged<int> onTap;
 
-navigate(int n) {
-  switch (n) {
-    case 0:
-      return AppRoutes.homeScreen;
-    case 1:
-      return AppRoutes.analysisScreen;
-    case 2:
-      return AppRoutes.transactionScreen;
-    case 3:
-      return AppRoutes.categoryScreen;
-    case 4:
-      return AppRoutes.myProfileScreen;
-  }
-}
-
-class _CustomNavBarState extends State<CustomNavBar> {
-  List<String> svgIcons = [
-    "assets/svgs/nav_bar_items/Home.svg",
-    "assets/svgs/nav_bar_items/Analysis.svg",
-    "assets/svgs/nav_bar_items/Transactions.svg",
-    "assets/svgs/nav_bar_items/Category.svg",
-    "assets/svgs/nav_bar_items/Profile.svg",
+  static const List<String> _svgIcons = [
+    'assets/svgs/nav_bar_items/Home.svg',
+    'assets/svgs/nav_bar_items/Analysis.svg',
+    'assets/svgs/nav_bar_items/Transactions.svg',
+    'assets/svgs/nav_bar_items/Category.svg',
+    'assets/svgs/nav_bar_items/Profile.svg',
   ];
-  late int isPageSelected = widget.isPageSelected;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xffDFF7E2),
-        borderRadius: BorderRadius.circular(150),
-      ),
-      width: double.infinity,
-      height: 108,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 44),
-        child: Row(
-          crossAxisAlignment: .center,
-          mainAxisAlignment: .spaceBetween,
-          children: [
-            ...List.generate(5, (index) {
+    return SafeArea(
+      top: false,
+      child: Container(
+        margin: const EdgeInsets.only(top: 10),
+        width: double.infinity,
+        height: 75,
+        decoration: BoxDecoration(
+          color: const Color(0xffDFF7E2),
+          borderRadius: BorderRadius.circular(150),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 44),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(_svgIcons.length, (index) {
+              final isSelected = selectedIndex == index;
+
               return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isPageSelected = index;
-                  });
-                  Navigator.pushNamed(context, navigate(index)!);
-                },
+                onTap: () => onTap(index),
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
-                    color: isPageSelected == index
-                        ? myColors().mainGreen
-                        : Color(0xffDFF7E2),
-                  ),
                   width: 57,
                   height: 53,
                   alignment: Alignment.center,
-                  child: SvgPicture.asset(svgIcons[index]),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(22),
+                    color: isSelected
+                        ? myColors.mainGreen
+                        : const Color(0xffDFF7E2),
+                  ),
+                  child: SvgPicture.asset(_svgIcons[index]),
                 ),
               );
             }),
-          ],
+          ),
         ),
       ),
     );

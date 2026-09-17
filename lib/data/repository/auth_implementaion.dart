@@ -1,5 +1,4 @@
 import 'package:fin_wise/data/model/user_model.dart';
-import 'package:fin_wise/data/web_services/api_consumer.dart';
 import 'package:fin_wise/data/web_services/dio_consumer.dart';
 import 'package:fin_wise/domain/repository/auth_repository.dart';
 
@@ -26,13 +25,4 @@ class AuthImplementation implements AuthRepository {
     });
     return UserModelSignUp.fromJson(response);
   }
-}
-
-Future<void> main() async {
-  final response = await AuthImplementation(
-    DioConsumer(),
-  ).signIn(UserModelSignIn(userName: "emilys", password: "emilyspass"));
-  print(
-    "first name:${response.firstName}, last name:${response.lastName},and his age is ${response.image}",
-  );
 }

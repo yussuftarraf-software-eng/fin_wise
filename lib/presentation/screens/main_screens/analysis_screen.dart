@@ -6,6 +6,6 @@ class AnalysisScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: CustomNavBar(isPageSelected: 1)));
+    return Scaffold();
   }
 }

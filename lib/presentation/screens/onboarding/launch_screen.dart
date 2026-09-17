@@ -13,19 +13,19 @@ class LaunchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myColors().backgroundGreenWhite,
+      backgroundColor: myColors.backgroundGreenWhite,
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
           children: [
             SvgPicture.asset(
               "assets/svgs/graph.svg",
-              color: myColors().mainGreen,
+              color: myColors.mainGreen,
             ),
             Gap(13),
             SvgPicture.asset(
               "assets/svgs/FinWise.svg",
-              color: myColors().mainGreen,
+              color: myColors.mainGreen,
             ),
             Gap(7),
             Text(
@@ -45,8 +45,8 @@ class LaunchScreen extends StatelessWidget {
               text: 'Log In',
               width: 207,
               height: 45,
-              backgroundColor: myColors().mainGreen,
-              textColor: myColors().lettersAndIcons,
+              backgroundColor: myColors.mainGreen,
+              textColor: myColors.lettersAndIcons,
             ),
             Gap(12),
             //sign up button
@@ -57,8 +57,8 @@ class LaunchScreen extends StatelessWidget {
               text: 'Sign Up',
               width: 207,
               height: 45,
-              backgroundColor: myColors().lightGreen,
-              textColor: myColors().lettersAndIcons,
+              backgroundColor: myColors.lightGreen,
+              textColor: myColors.lettersAndIcons,
             ),
             Gap(12),
             //forgot password text with gesture detector on it
@@ -71,7 +71,7 @@ class LaunchScreen extends StatelessWidget {
                 style: GoogleFonts.leagueSpartan(
                   fontWeight: .w600,
                   fontSize: 14,
-                  color: myColors().lettersAndIcons,
+                  color: myColors.lettersAndIcons,
                 ),
               ),
             ),

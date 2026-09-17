@@ -31,7 +31,7 @@ class CustomTextField extends FormField<String> {
                  height: 41,
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(18),
-                   color: myColors().lightGreen,
+                   color: myColors.lightGreen,
                    border: field.hasError
                        ? Border.all(color: Colors.redAccent, width: 1.2)
                        : null,
@@ -50,7 +50,7 @@ class CustomTextField extends FormField<String> {
                    textAlignVertical: TextAlignVertical.center,
                    style: GoogleFonts.poppins(
                      fontSize: 16,
-                     color: myColors().lettersAndIcons,
+                     color: myColors.lettersAndIcons,
                    ),
                    decoration: InputDecoration(
                      suffixIcon: svgIcon == null
@@ -61,7 +61,7 @@ class CustomTextField extends FormField<String> {
                                svgIcon,
                                width: 20,
                                height: 20,
-                               color: myColors().darkModeGreenBar,
+                               color: myColors.darkModeGreenBar,
                              ),
                            ),
                      // No errorText/errorStyle here on purpose — we draw our
@@ -72,7 +72,7 @@ class CustomTextField extends FormField<String> {
                      hintText: hintText,
                      hintStyle: GoogleFonts.poppins(
                        fontSize: 16,
-                       color: myColors().lettersAndIcons.withOpacity(0.45),
+                       color: myColors.lettersAndIcons.withOpacity(0.45),
                      ),
                      contentPadding: const EdgeInsets.symmetric(
                        horizontal: 34,
