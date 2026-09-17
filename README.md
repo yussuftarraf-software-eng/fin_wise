@@ -33,6 +33,12 @@ FinWise is designed to give people a simple, clear way to log daily expenses and
 
 - ✅ Android
 - ✅ iOS
+## Screenshots and records for the app
+https://github.com/yussuftarraf-software-eng/fin_wise/edit/master/README.md
+https://github.com/yussuftarraf-software-eng/fin_wise/edit/master/README.md
+https://github.com/yussuftarraf-software-eng/fin_wise/edit/master/README.md
+https://github.com/yussuftarraf-software-eng/fin_wise/edit/master/README.md
+
 
 ## Screens Implemented So Far
 
