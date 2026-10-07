@@ -3,6 +3,7 @@ import 'package:fin_wise/presentation/custom_widgets/custom_main_app_container.d
 import 'package:fin_wise/presentation/custom_widgets/custom_nav_bar.dart';
 import 'package:fin_wise/presentation/custom_widgets/custom_notification_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import '../../../data/model/notification.dart';
 import '../../custom_widgets/custom_text_poppins.dart';
@@ -82,7 +83,10 @@ class NotificationScreen extends StatelessWidget {
           fontSize: 20,
           color: myColors.lettersAndIcons,
         ),
-        actions: [CustomNotificationButton(), Gap(36)],
+        actions: [
+          SvgPicture.asset("assets/svgs/Icon-Notification.svg"),
+          Gap(36),
+        ],
       ),
       backgroundColor: myColors.mainGreen,
       body: CustomMainAppContainer(

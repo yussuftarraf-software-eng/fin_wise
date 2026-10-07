@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015837966887",
+    "project_id": "fin-wise1",
+    "storage_bucket": "fin-wise1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015837966887:android:ecb515d79dcdba6728c402",
+        "android_client_info": {
+          "package_name": "com.example.fin_wise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015837966887-pc7k1hkvmi1u070oueg069960vrr6kk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV4joHxkWlcQQpdC-uDKHPCUhBwUBJIpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015837966887-pc7k1hkvmi1u070oueg069960vrr6kk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

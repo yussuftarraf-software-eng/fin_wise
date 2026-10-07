@@ -1,9 +1,24 @@
-import 'package:fin_wise/presentation/screens/main_screens/home_screen.dart';
-import 'package:fin_wise/presentation/screens/onboarding/splash_screen.dart';
 import 'package:fin_wise/route.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } on FirebaseException catch (e) {
+    if (e.code != 'duplicate-app') rethrow;
+  }
+
+  await GoogleSignIn.instance.initialize(
+    serverClientId:
+        '1015837966887-pc7k1hkvmi1u070oueg069960vrr6kk0.apps.googleusercontent.com',
+  );
   runApp(const MyApp());
 }
 

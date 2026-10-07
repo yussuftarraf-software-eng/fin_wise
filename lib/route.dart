@@ -8,13 +8,13 @@
 // ASSUMPTIONS (adjust to match your actual files/classes):
 //   - Screens live under lib/screens/.
 //   - ProductDetail needs a Product object, passed as `arguments`.
-
 import 'package:fin_wise/presentation/screens/main_screens/account_balance_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/analysis_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/category_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/forgot_password_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/home_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/notification_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/profile_related_screens/edit_profile_screen.dart';
 import 'package:fin_wise/presentation/screens/onboarding/launch_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/login_in_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/my_profile_screen.dart';
@@ -47,6 +47,8 @@ class AppRoutes {
   static const String notificationScreen = '/NotificationScreen';
   static const String accountBalanceScreen = '/AccountBalanceScreen';
   static const String root = '/Route';
+  static const String editProfileScreen = '/EditProfileScreen';
+  static const String signInWithGoogle = '/SignInWithGoogleScreen';
 }
 
 // ---------------------------------------------------------------------
@@ -130,6 +132,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AppRoutes.root:
       return MaterialPageRoute(
         builder: (context) => Root(isPageSelected: 0),
+        settings: settings,
+      );
+    case AppRoutes.editProfileScreen:
+      return MaterialPageRoute(
+        builder: (context) => EditProfileScreen(),
         settings: settings,
       );
     default:

@@ -64,7 +64,7 @@ class _LoginInScreenState extends State<LoginInScreen> {
           listener: (context, state) {
             // LOGIN SUCCESS
             if (state is AuthSuccess) {
-              Navigator.pushNamed(context, AppRoutes.root);
+              Navigator.pushReplacementNamed(context, AppRoutes.root);
             }
             // LOGIN FAILURE
             else if (state is AuthFailure) {
@@ -214,10 +214,9 @@ class _LoginInScreenState extends State<LoginInScreen> {
                                           const Gap(19),
                                           GestureDetector(
                                             onTap: () {
-                                              Navigator.pushNamed(
-                                                context,
-                                                '/ForgotPassword',
-                                              );
+                                              context
+                                                  .read<AuthCubit>()
+                                                  .signInWithGoogle();
                                             },
                                             child: Text(
                                               "Forgot Password?",
@@ -284,20 +283,32 @@ class _LoginInScreenState extends State<LoginInScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              SvgPicture.asset(
-                                                "assets/svgs/Facebook.svg",
-                                                colorFilter: ColorFilter.mode(
-                                                  myColors.darkModeGreenBar,
-                                                  BlendMode.srcIn,
-                                                ), // CHANGED: Updated deprecated 'color' property to 'colorFilter'
+                                              GestureDetector(
+                                                onTap: () {
+                                                  // AuthCubit()
+                                                  //     .signInWithFacebook();
+                                                },
+                                                child: SvgPicture.asset(
+                                                  "assets/svgs/Facebook.svg",
+                                                  colorFilter: ColorFilter.mode(
+                                                    myColors.darkModeGreenBar,
+                                                    BlendMode.srcIn,
+                                                  ), // CHANGED: Updated deprecated 'color' property to 'colorFilter'
+                                                ),
                                               ),
                                               const Gap(17),
-                                              SvgPicture.asset(
-                                                "assets/svgs/Google.svg",
-                                                colorFilter: ColorFilter.mode(
-                                                  myColors.darkModeGreenBar,
-                                                  BlendMode.srcIn,
-                                                ), // CHANGED: Updated deprecated 'color' property to 'colorFilter'
+                                              GestureDetector(
+                                                onTap: () {
+                                                  AuthCubit()
+                                                      .signInWithGoogle();
+                                                },
+                                                child: SvgPicture.asset(
+                                                  "assets/svgs/Google.svg",
+                                                  colorFilter: ColorFilter.mode(
+                                                    myColors.darkModeGreenBar,
+                                                    BlendMode.srcIn,
+                                                  ), // CHANGED: Updated deprecated 'color' property to 'colorFilter'
+                                                ),
                                               ),
                                             ],
                                           ),
