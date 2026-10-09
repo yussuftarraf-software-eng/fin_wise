@@ -15,9 +15,10 @@ import 'package:fin_wise/presentation/screens/auth/forgot_password_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/home_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/notification_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/profile_related_screens/edit_profile_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/profile_related_screens/security_profile_related/security_profile_screen.dart';
 import 'package:fin_wise/presentation/screens/onboarding/launch_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/login_in_screen.dart';
-import 'package:fin_wise/presentation/screens/main_screens/my_profile_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/profile_related_screens/my_profile_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/new_password_screen.dart';
 import 'package:fin_wise/presentation/screens/auth/sign_up_screen.dart';
 import 'package:fin_wise/presentation/screens/onboarding/splash_screen.dart';
@@ -49,6 +50,7 @@ class AppRoutes {
   static const String root = '/Route';
   static const String editProfileScreen = '/EditProfileScreen';
   static const String signInWithGoogle = '/SignInWithGoogleScreen';
+  static const String securityProfileScreen = '/securityProfileScreen';
 }
 
 // ---------------------------------------------------------------------
@@ -137,6 +139,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AppRoutes.editProfileScreen:
       return MaterialPageRoute(
         builder: (context) => EditProfileScreen(),
+        settings: settings,
+      );
+    case AppRoutes.securityProfileScreen:
+      return MaterialPageRoute(
+        builder: (context) => SecurityProfileScreen(),
         settings: settings,
       );
     default:

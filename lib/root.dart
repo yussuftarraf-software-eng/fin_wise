@@ -3,7 +3,7 @@ import 'package:fin_wise/presentation/custom_widgets/custom_nav_bar.dart';
 import 'package:fin_wise/presentation/screens/main_screens/analysis_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/category_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/home_screen.dart';
-import 'package:fin_wise/presentation/screens/main_screens/my_profile_screen.dart';
+import 'package:fin_wise/presentation/screens/main_screens/profile_related_screens/my_profile_screen.dart';
 import 'package:fin_wise/presentation/screens/main_screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 

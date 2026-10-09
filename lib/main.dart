@@ -2,11 +2,14 @@ import 'package:fin_wise/route.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'constants/my_colors.dart';
+import 'core/shared_prefs_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await CacheHelper.init();
+  myColors.loadSavedTheme();
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -27,10 +30,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: AppRoutes.splashScreen,
-      onGenerateRoute: onGenerateRoute,
-      debugShowCheckedModeBanner: false,
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: myColors.themeMode,
+      builder: (context, mode, _) {
+        return MaterialApp(
+          initialRoute: AppRoutes.splashScreen,
+          onGenerateRoute: onGenerateRoute,
+          debugShowCheckedModeBanner: false,
+          themeMode: mode,
+          theme: ThemeData(brightness: Brightness.light),
+          darkTheme: ThemeData(brightness: Brightness.dark),
+        );
+      },
     );
   }
 }

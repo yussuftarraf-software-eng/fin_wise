@@ -214,9 +214,10 @@ class _LoginInScreenState extends State<LoginInScreen> {
                                           const Gap(19),
                                           GestureDetector(
                                             onTap: () {
-                                              context
-                                                  .read<AuthCubit>()
-                                                  .signInWithGoogle();
+                                              Navigator.pushNamed(
+                                                context,
+                                                AppRoutes.newPassword,
+                                              );
                                             },
                                             child: Text(
                                               "Forgot Password?",
@@ -299,8 +300,7 @@ class _LoginInScreenState extends State<LoginInScreen> {
                                               const Gap(17),
                                               GestureDetector(
                                                 onTap: () {
-                                                  AuthCubit()
-                                                      .signInWithGoogle();
+                                                  authCubit.signInWithGoogle();
                                                 },
                                                 child: SvgPicture.asset(
                                                   "assets/svgs/Google.svg",

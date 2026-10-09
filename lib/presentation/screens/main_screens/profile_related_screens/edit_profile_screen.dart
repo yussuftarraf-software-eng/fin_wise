@@ -1,11 +1,12 @@
 import 'package:fin_wise/constants/my_colors.dart';
+import 'package:fin_wise/presentation/custom_widgets/custom_button.dart';
 import 'package:fin_wise/presentation/custom_widgets/custom_text_form_field.dart';
 import 'package:fin_wise/presentation/custom_widgets/custom_text_poppins.dart';
+import 'package:fin_wise/root.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../route.dart';
-import '../../../custom_widgets/custom_profile_row_element.dart';
+import '../../../../core/shared_prefs_service.dart';
 import '../../../custom_widgets/custom_profile_scaffold.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -19,9 +20,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController userName = TextEditingController();
   final TextEditingController phone = TextEditingController();
   final TextEditingController emailAddress = TextEditingController();
+  bool isNotificationOn = false;
   @override
   Widget build(BuildContext context) {
     return CustomProfileScaffold(
+      isImagePickerShow: true,
       title: "Edit My Profile",
       name: "John Smith",
       id: "123456789",
@@ -76,8 +79,100 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             obscureText: false,
             textInputType: .emailAddress,
           ),
-          Gap(40),
-          Row(children: []),
+          Gap(20),
+          Row(
+            children: [
+              CustomTextPoppins(
+                text: "Push Notifications",
+                fontWeight: .w600,
+                fontSize: 17,
+                color: myColors.lettersAndIcons,
+              ),
+              Spacer(),
+              Transform.scale(
+                scale: 0.8,
+                child: Switch(
+                  value: isNotificationOn,
+                  onChanged: (value) {
+                    setState(() => isNotificationOn = value);
+                  },
+                  activeThumbColor: Colors.white,
+                  activeTrackColor: myColors.mainGreen, // green track
+                  inactiveThumbColor: Colors.white,
+                  inactiveTrackColor: myColors.lightGreen,
+                ),
+              ),
+              Gap(30),
+            ],
+          ),
+          Row(
+            children: [
+              CustomTextPoppins(
+                text: "Turn Dark Theme",
+                fontWeight: .w600,
+                fontSize: 17,
+                color: myColors.lettersAndIcons,
+              ),
+              Spacer(),
+              Transform.scale(
+                scale: 0.8,
+                child: Switch(
+                  value: myColors.isDark,
+                  onChanged: (value) => myColors.setDarkMode(value),
+                  activeThumbColor: Colors.white,
+                  activeTrackColor: myColors.mainGreen,
+                  inactiveThumbColor: Colors.white,
+                  inactiveTrackColor: myColors.lightGreen,
+                ),
+              ),
+              Gap(30),
+            ],
+          ),
+          Gap(20),
+          Padding(
+            padding: const EdgeInsets.only(right: 38),
+            child: Center(
+              child: CustomButton(
+                onTap: () {
+                  setState(() {
+                    CacheHelper.removeData(key: 'profile_image_path');
+                  });
+                },
+                text: "Delete image",
+                width: 169,
+                height: 36,
+                backgroundColor: Colors.red,
+                textColor: myColors.lettersAndIcons,
+                fontSize: 15,
+                fontWeight: .w600,
+              ),
+            ),
+          ),
+
+          Gap(10),
+          Padding(
+            padding: const EdgeInsets.only(right: 38),
+            child: Center(
+              child: CustomButton(
+                onTap: () async {
+                  await Future.delayed(const Duration(seconds: 1));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Root(isPageSelected: 4),
+                    ),
+                  );
+                },
+                text: "Update Profile",
+                width: 169,
+                height: 36,
+                backgroundColor: myColors.mainGreen,
+                textColor: myColors.lettersAndIcons,
+                fontSize: 15,
+                fontWeight: .w600,
+              ),
+            ),
+          ),
         ],
       ),
     );

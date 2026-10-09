@@ -10,6 +10,7 @@ class MyProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomProfileScaffold(
+      isImagePickerShow: false,
       title: "Profile",
       name: "John Smith",
       id: "123456789",
@@ -25,6 +26,8 @@ class MyProfileScreen extends StatelessWidget {
           CustomProfileRowElement(
             image: "assets/svgs/profile/Icon Security.svg",
             text: "Security",
+            function: () =>
+                Navigator.pushNamed(context, AppRoutes.securityProfileScreen),
           ),
           const Gap(34),
           CustomProfileRowElement(
